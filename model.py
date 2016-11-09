@@ -16,8 +16,6 @@ class Model:
         cnx.close()
         return True
 
-    def addnote(content, userid):
-        pass
 
     def createconnection(self):
         ## initalize a connection and return it 
@@ -55,6 +53,16 @@ class Model:
 
     def arcnote(self,noteid):
         command = "update notes set active = 0 where id = {}".format(noteid)
+        cnx = self.createconnection()
+        cursor = cnx.cursor()
+        cursor.execute(command)
+        cnx.commit()
+        cursor.close()
+        cnx.close()
+        return True
+
+    def unarcnote(self,noteid):
+        command = "update notes set active = 1 where id = {}".format(noteid)
         cnx = self.createconnection()
         cursor = cnx.cursor()
         cursor.execute(command)

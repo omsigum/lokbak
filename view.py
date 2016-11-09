@@ -4,10 +4,10 @@ class View:
         self.cont = cont		
         ## listen for the right things. 
         print("view initalized")
-        @app.route("/getapikey/<username>/<password>")
+        @app.route("/user/getkey/<username>/<password>")
         def authenticate(username, password):                           
             return self.cont.getapikey(username,password)
-        @app.route("/createuser/<username>/<fullname>/<password>")
+        @app.route("/user/add/<username>/<fullname>/<password>")
         def createuser(username = None, fullname = None, password = None):
             ## validate the input  
             if(username == None or fullname == None or password == None):
@@ -25,15 +25,18 @@ class View:
                 return "supply valid apik"
             ## pass into controller and return the value that the controller returns. 
             return self.cont.addnote(content, apik)
-        @app.route("/notes/archive/<noteid>/<apik>")
+        @app.route("/notes/arc/<noteid>/<apik>")
         def archivenote(noteid,apik):
             return self.cont.arcnote(noteid,apik)
-        @app.route("/notes/delete/<noteid>/<apik>")
+        @app.route("/notes/del/<noteid>/<apik>")
         def deletenote(noteid,apik):
             return self.cont.delnote(noteid, apik)
-        @app.route("/notes/list/<apik>")
+        @app.route("/notes/ls/<apik>")
         def listnotes(apik):
             return self.cont.listnotes(apik)
-        @app.route("/notes/listark/<apik>")
+        @app.route("/notes/lsarc/<apik>")
         def arcnotes(apik):
             return self.cont.listnotes(apik, 0)
+        @app.route("/notes/unarc/<noteid>/<apik>")
+        def unarc(apik):
+            return self.cont.unarcnote(noteid,apik)

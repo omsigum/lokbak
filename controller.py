@@ -52,3 +52,12 @@ class Con:
                 return "something went wrong"
         else:
             return "you are either not owner of fhe noteid and/or apik does not exists."
+    def unarc(self,noteid,apik):
+        if(self.modl.apikownsnote(apik,noteid)):
+            if(self.modl.unarcnote(noteid)):
+                return "note has been reverted back into main"
+            else:
+                return "some error has occured"
+        else:
+            return "You either don't own the note or have a invalid apikey and/or noteid"
+
