@@ -81,6 +81,7 @@ class Model:
         cursor.close()
         cnx.close()
         return json.dumps(dicta)
+
     def delnote(self,noteid):
         command = "delete from notes where id = {}".format(noteid)
         cnx = self.createconnection()
@@ -90,6 +91,7 @@ class Model:
         cursor.close()
         cnx.close()
         return True
+
     def addnote(self,content,apik):
         command = "insert into notes(userID, content) VALUES ((select userID from apiKeys where aKey = '{}'), '{}');".format(apik, content);          
         cnx = self.createconnection()

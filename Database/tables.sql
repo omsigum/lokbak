@@ -81,10 +81,10 @@ end $$
 delimiter ;
 -- gettting apikeys from authenticated user. 
 delimiter $$
-create function getapikey(userid int)
+create function getapikey(userid_ int)
 returns char(87)
 	begin
-	return(select aKey from apiKeys where userID = userid and issued > date_sub(now(), interval 3 hour)); 
+	return(select aKey from apiKeys where userID = userid_ and issued > date_sub(now(), interval 3 hour)); 
 end $$
 delimiter ;
 -- trigger, delete old apikeys on a api query. once they are more then 3 hours old.
