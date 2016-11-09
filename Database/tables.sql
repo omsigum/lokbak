@@ -40,10 +40,17 @@ delimiter $$
 create procedure adduser(user_name varchar(255), hash_ char(87), fullName varchar(255)) 
 begin
 	INSERT INTO users(username, hash, fullname) VALUES (user_name, hash_, fullname);
-	select 1 as result;
 end $$
 delimiter ;
 
+-- Adding a user;
+#delimiter $$
+#create function adduser(user_name varchar(255), hash_ char(87), fullName varchar(255))
+#return int determanistic
+#	begin	
+#		return(INSERT INTO users(username, hash, fullname) VALUES (user_name, hash_, fullname);  select count(*) from users where username = user_name;);
+#end $$
+delimiter ;
 -- Adding a note
 delimiter $$
 create procedure addnote(userid_ int, content_ text)
@@ -77,34 +84,10 @@ delimiter $$
 create function getapikey(userid int)
 returns char(87)
 	begin
-	return(select aKey from apiKeys where userID = userid); 
+	return(select aKey from apiKeys where userID = userid and issued > date_sub(now(), interval 3 hour)); 
 end $$
 delimiter ;
 -- trigger, delete old apikeys on a api query. once they are more then 3 hours old.
-#create trigger deloldapikeys
-#	before select on apiKeys
-#		delete from apiKeys
-#
-#
+-- not working out. instead the select will limit to only three hour old keys. 
 
 
-
-
-
-
-# create trigger dontbookwhengone
-# 13         before insert on bookedflights
-# 12         for each row
-# 11                 begin
-# 10                         declare msg varchar(255);
-#  9                         declare currdate date;
-#  8             declare flightdate date;
-#  7                         set currdate = (select curdate());
-#  6                         set flightdate = (select flightDate from flights where flightCode = new.flightCode);
-#  5                         if(flightdate < currdate) then
-#  4                                 set msg = 'The flight has already left.';
-#  3                                 signal sqlstate '45000' set message_text = msg;
-#  2                         end if;
-#  1                 end $$
-#  0 delimiter ;
-#
