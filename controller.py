@@ -12,6 +12,8 @@ class Con:
         return passs.encrypt(password,rounds=20000, salt_size=16)		
     def authuser(self, username, password):
         passhash = self.modl.getpass(username)
+        print("----------------------------------------")
+        print(str(password) + "    " + str(passhash))
         if( passs.verify(password, passhash) ):
             ## user verified. 
             return True

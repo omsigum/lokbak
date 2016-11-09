@@ -140,10 +140,11 @@ class Model:
     def getpass(self,username):
         cnx = self.createconnection()
         cursor = cnx.cursor()
-        command = ("select hash from users where username = '{}';".format(username))
+        command = "select hash from users where username = '{}';".format(username)
         cursor.execute(command)
         rv = cursor.fetchone()
         cnx.commit()
         cnx.close()
         cursor.close()
+        return str(rv[0])
 
