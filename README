@@ -8,3 +8,4 @@ class conf:
                 self.dbase  = "DATABASENAME"
 This project runs on python3.
 pip dependecies are in requirements.txt
+there is currently a server running on lok.enaiac.is, don't count on it being there.
