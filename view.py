@@ -3,7 +3,9 @@ class View:
     def __init__(self,app, cont):
         self.cont = cont		
         ## listen for the right things. 
-        print("view initalized")
+        @app.route("/")
+        def redir():
+            return "<script>window.location.href =\"/static\"</script>"
         @app.route("/user/getkey/<username>/<password>")
         def authenticate(username, password):                           
             return self.cont.getapikey(username,password)
