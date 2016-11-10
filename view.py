@@ -21,7 +21,7 @@ class View:
                 return "user has been added"
             else:
                 return "something went wrong. user was not added"
-        @app.route("/notes/addnote/<content>/<apik>")
+        @app.route("/notes/add/<content>/<apik>")
         def createnote(content, apik):
             if(" " in apik):
                 return "supply valid apik"
@@ -40,5 +40,5 @@ class View:
         def arcnotes(apik):
             return self.cont.listnotes(apik, 0)
         @app.route("/notes/unarc/<noteid>/<apik>")
-        def unarc(apik):
-            return self.cont.unarcnote(noteid,apik)
+        def unarc(noteid,apik):
+            return self.cont.unarc(noteid,apik)
