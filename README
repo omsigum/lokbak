@@ -1,0 +1,10 @@
+Inoreder to run the note api you must have a running Mysql/mariadb server.
+Also add a file called conf.py, it looks like:
+class conf:
+        def __init__(self):
+                self.dbpass = "DATABASEPASSWORD"
+                self.dbusername = "DATABASEUSERNAME"
+                self.dbhost = "HOSTNAME"
+                self.dbase  = "DATABASENAME"
+This project runs on python3.
+pip dependecies are in requirements.txt
