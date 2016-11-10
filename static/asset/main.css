@@ -1,0 +1,40 @@
+.left{
+	height: 100vh;
+	background-color: #90a4ae;
+}
+#pink{
+	background-color: #E57373;
+	padding: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-center;
+}
+h1{
+}
+#pink h1{
+	padding: 7px;
+	margin: 0;
+}
+.right{
+	background-color: #26a69a;
+	margin: 0;
+	padding : 0;
+}
+.red{
+	font-color: red;
+}
+.fade{
+	background-color: rgba(0,0,0,0.15);
+	padding: 4px;
+	margin: 15px 0 10px 0;
+}
+body{
+	color: #ffffff;
+	background-color: #90a4ae;
+}
+a{
+	color: #ffffff;
+}
+ul li:hover{
+	background-color: #89a2ae;
+}
